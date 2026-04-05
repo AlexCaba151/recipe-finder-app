@@ -1,0 +1,43 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #F7F7F7;
+}
+
+header {
+  background: #FF6B6B;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+input {
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background: #FFE66D;
+  border: none;
+  cursor: pointer;
+}
+
+#recipesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.recipe-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.recipe-card img {
+  width: 100%;
+  border-radius: 10px;
+}
