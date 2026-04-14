@@ -1,4 +1,13 @@
 (function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin===`use-credentials`?t.credentials=`include`:e.crossOrigin===`anonymous`?t.credentials=`omit`:t.credentials=`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var e=`https://www.themealdb.com/api/json/v1/1/search.php?s=`;async function t(t){return(await(await fetch(e+t)).json()).meals}function n(e){let t=document.getElementById(`recipesContainer`);if(t.innerHTML=``,!e){t.innerHTML=`<p>No recipes found</p>`;return}e.forEach(e=>{let n=document.createElement(`div`);n.classList.add(`recipe-card`),n.innerHTML=`
       <img src="${e.strMealThumb}" />
       <h3>${e.strMeal}</h3>
-    `,t.appendChild(n)})}var r=document.getElementById(`searchBtn`),i=document.getElementById(`searchInput`);async function a(){let e=i.value;n(await t(e))}r.addEventListener(`click`,a),i.addEventListener(`keydown`,e=>{e.key===`Enter`&&a()});
+    `,n.addEventListener(`click`,()=>{r(e)}),t.appendChild(n)})}function r(e){let t=document.getElementById(`recipeModal`),n=document.getElementById(`modalBody`);n.innerHTML=`
+  <h2>${e.strMeal}</h2>
+
+  <img src="${e.strMealThumb}" />
+
+  <p><strong>Category:</strong> ${e.strCategory}</p>
+
+  <p><strong>Instructions:</strong></p>
+  <p>${e.strInstructions}</p>
+`,t.classList.remove(`hidden`)}var i=document.getElementById(`searchBtn`),a=document.getElementById(`searchInput`);async function o(){let e=a.value;n(await t(e))}i.addEventListener(`click`,o),a.addEventListener(`keydown`,e=>{e.key===`Enter`&&o()});var s=document.getElementById(`closeModal`),c=document.getElementById(`recipeModal`);s.addEventListener(`click`,()=>{c.classList.add(`hidden`)});
