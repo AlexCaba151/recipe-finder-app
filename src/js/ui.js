@@ -16,6 +16,29 @@ export function displayRecipes(recipes) {
       <h3>${recipe.strMeal}</h3>
     `;
 
+    // 👉 CLICK EVENT
+    card.addEventListener("click", () => {
+      showRecipeDetails(recipe);
+    });
+
     container.appendChild(card);
   });
+}
+
+function showRecipeDetails(recipe) {
+  const modal = document.getElementById("recipeModal");
+  const modalBody = document.getElementById("modalBody");
+
+  modalBody.innerHTML = `
+  <h2>${recipe.strMeal}</h2>
+
+  <img src="${recipe.strMealThumb}" />
+
+  <p><strong>Category:</strong> ${recipe.strCategory}</p>
+
+  <p><strong>Instructions:</strong></p>
+  <p>${recipe.strInstructions}</p>
+`;
+
+  modal.classList.remove("hidden");
 }

@@ -19,3 +19,10 @@ input.addEventListener("keydown", (e) => {
     handleSearch();
   }
 });
+
+const closeBtn = document.getElementById("closeModal");
+const modal = document.getElementById("recipeModal");
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
